@@ -35,10 +35,10 @@ export default class TextINput extends Component<Props> {
 
     switch (type) {
       case 'email':
-        this.setState({keyboardType: 'email-address', icon: 'email-outline'});
+        this.setState({ keyboardType: 'email-address', icon: 'email-outline' });
         break;
       case 'name':
-        this.setState({icon: 'account-outline'});
+        this.setState({ icon: 'account-outline' });
       default:
         break
     }
