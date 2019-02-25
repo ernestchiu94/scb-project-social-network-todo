@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   Modal as ModalView,
+  StatusBar,
   ScrollView,
   TouchableWithoutFeedback,
   TouchableOpacity,
@@ -25,7 +26,8 @@ export default class Modal extends Component<Props> {
         onRequestClose={onBackdropPress}
         transparent
       >
-        <TouchableOpacity style={styles.container} activeOpacity={1} onPressoOut={onBackdropPress}>
+        <StatusBar barStyle="light-content" />
+        <TouchableOpacity style={styles.container} activeOpacity={1} onPressOut={onBackdropPress}>
           <ScrollView contentContainerStyle={styles.contentContainer} directionalLocalEnabled>
             <TouchableWithoutFeedback>
               <View style={styles.content}>

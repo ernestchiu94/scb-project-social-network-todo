@@ -12,7 +12,7 @@ export default function profileReducer(state = initialState, { type, payload }) 
     case LOAD_SUCCESS:
       return {
         ...state,
-        profile: payload
+        profile: payload.profile
       };
     case CLEAR_STATE_SUCCESS:
       return initialState;

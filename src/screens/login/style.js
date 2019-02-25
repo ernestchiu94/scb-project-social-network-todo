@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     borderRadius: 10,
     padding: '5%',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
   },
   textContainer: {
     flexDirection: 'row',
@@ -24,7 +25,18 @@ const styles = StyleSheet.create({
   text: {
     ...shadow,
     fontSize: 12,
-    color: COLOR.WHITE
+    color: COLOR.WHITE,
+    textAlign: 'center'
+  },
+  video: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    height: DIMENSION.HEIGHT,
+    width: DIMENSION.WIDTH,
+    backgroundColor: COLOR.OFFBLACK
   }
 });
 

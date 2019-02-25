@@ -19,7 +19,7 @@ interface Props {
   errorText?: string
 }
 
-export default class TextINput extends Component<Props> {
+export default class TextInput extends Component<Props> {
   constructor(props) {
     super(props);
 
@@ -83,7 +83,6 @@ export default class TextINput extends Component<Props> {
 
     return (
       <Fragment>
-        { error && <Text style={styles.errorDescription}>{ errorText }</Text> }
         <View style={[styles.inputContainer, isFocused && styles.highlight, error && styles.error, style]}>
           <Icon
             name={error ? 'alert-circle' : icon}
@@ -111,6 +110,7 @@ export default class TextINput extends Component<Props> {
             enablesReturnKeyAutomatically
           />
         </View>
+        { error && <Text style={styles.errorDescription}>{ errorText }</Text> }
       </Fragment>
     )
   }

@@ -24,7 +24,7 @@ export default class Button extends Component<Props> {
         disabled={disabled}
         underlayColor
       >
-        <Text style={styles.text}>{ title }</Text>
+        <Text style={styles.text}>{ title.toUpperCase() }</Text>
       </TouchableHighlight>
     )
   }

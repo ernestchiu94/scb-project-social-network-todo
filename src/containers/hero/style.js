@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { notchContainer } from '../../styles/common';
+import { notchContainer } from '@styles/common';
 
 const styles = StyleSheet.create({
   container: {

@@ -7,6 +7,7 @@ import styles from './style';
 class LaunchScreen extends Component<ScreenProps> {
   componentDidMount() {
     const { profile, navigation: { navigate } } = this.props;
+    console.log(profile);
     if (profile.profile === undefined) {
       return navigate('login')
     }

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   headerIcon: {
     textAlign: 'center',
     color: COLOR.DARKGREY,
-    fontSize: 40
+    fontSize: 40,
   },
   headerTitle: {
     textAlign: 'center',

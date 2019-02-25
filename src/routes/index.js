@@ -1,10 +1,11 @@
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
-import AppStack from './app';
-import { Launch } from '@screens';
+// import AppStack from './app';
+import { Launch, Login } from '@screens';
 
 const RootStack = createSwitchNavigator({
   launch: Launch,
-  app: AppStack
+  login: Login
+  // app: AppStack
 }, {
   initialRouteName: 'launch'
 });

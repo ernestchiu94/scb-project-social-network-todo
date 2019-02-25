@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
 import Video from 'react-native-video';
 import { translate } from 'react-i18next';
-import { Fullscreen, Hero, Modal } from '@container';
+import { Fullscreen, Hero, Modal } from '@containers';
 import { Login } from '@forms';
 import { Button } from '@components';
 import type { ScreenProps } from '@config/types';
 import styles from './style';
+import video from '@assets/login_background.mp4';
 
 class LoginScreen extends Component<ScreenProps> {
   constructor(props) {
@@ -17,9 +18,14 @@ class LoginScreen extends Component<ScreenProps> {
     }
   }
 
+  state = {
+    showModal: false
+  };
+
   toggleModal = response => {
     const { showModal } = this.state;
     const { navigation: { navigate } } = this.props;
+    console.log(response);
 
     this.setState({ showModal: !showModal });
 
@@ -40,9 +46,9 @@ class LoginScreen extends Component<ScreenProps> {
   }
 
   renderBackground() {
-    // return (
-      {/*<Video/>*/}
-    // )
+    return (
+      <Video source={video} style={styles.video} resizeMode="cover" repeat/>
+    )
   }
 
   render() {
@@ -52,6 +58,7 @@ class LoginScreen extends Component<ScreenProps> {
       <Fragment>
         { this.renderBackground() }
         <Fullscreen>
+          <StatusBar barStyle="light-content" />
           <Hero content={this.renderContent()}/>
           <Modal visible={showModal} onBackdropPress={this.toggleModal}>
             <Login onClose={this.toggleModal} />

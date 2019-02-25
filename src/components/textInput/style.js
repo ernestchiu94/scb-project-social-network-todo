@@ -1,5 +1,5 @@
-import { Platform, StyleSheet } from 'react-native'
-import { COLOR, DIMENSION } from '@styles/constants'
+import { Platform, StyleSheet } from 'react-native';
+import { COLOR, DIMENSION } from '@styles/constants';
 
 const style = StyleSheet.create({
   inputContainer: {
