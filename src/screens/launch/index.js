@@ -6,11 +6,9 @@ import styles from './style';
 
 class LaunchScreen extends Component<ScreenProps> {
   componentDidMount() {
-    const { profile, navigation: { navigate } } = this.props;
+    const { userProfile: { profile }, navigation: { navigate } } = this.props;
     console.log(profile);
-    if (profile.profile === undefined) {
-      return navigate('login')
-    }
+    return navigate(profile === undefined ? 'login' : 'todos');
   }
 
   render() {
@@ -23,7 +21,7 @@ class LaunchScreen extends Component<ScreenProps> {
 }
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  userProfile: state.profile
 });
 
 export default connect(mapStateToProps)(LaunchScreen);

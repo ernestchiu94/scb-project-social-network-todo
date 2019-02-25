@@ -16,3 +16,8 @@ export const shadow = {
   shadowOffset: { height: 7, width: 10 },
   shadowOpacity: 0.4
 };
+
+export const whiteBackground = {
+  flex: 1,
+  backgroundColor: COLOR.OFFWHITE
+};

@@ -18,19 +18,13 @@ class LoginScreen extends Component<ScreenProps> {
     }
   }
 
-  state = {
-    showModal: false
-  };
-
   toggleModal = response => {
     const { showModal } = this.state;
     const { navigation: { navigate } } = this.props;
-    console.log(response);
 
     this.setState({ showModal: !showModal });
-
-    if (response) {
-      navigate('app');
+    if (response === 'onSuccess') {
+      navigate('todos');
     }
   };
 
@@ -47,7 +41,7 @@ class LoginScreen extends Component<ScreenProps> {
 
   renderBackground() {
     return (
-      <Video source={video} style={styles.video} resizeMode="cover" repeat/>
+      <Video source={video} style={styles.video} resizeMode="cover" repeat muted/>
     )
   }
 

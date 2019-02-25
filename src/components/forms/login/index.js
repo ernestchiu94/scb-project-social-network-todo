@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
+import { loadProfile as load } from '@redux-actions/profile';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TextInput, Button } from '@components';
 import type { ModalProps } from '@config/types';
@@ -23,9 +25,10 @@ class LoginForm extends Component<ModalProps> {
 
   validateForm = () => {
     const { email } = this.state;
-    const { onClose } = this.props;
+    const { onClose, loadProfile } = this.props;
 
     if (validateEmail(email)) {
+      loadProfile({ email });
       return onClose('onSuccess');
     }
 
@@ -72,4 +75,13 @@ class LoginForm extends Component<ModalProps> {
   }
 }
 
-export default translate('form', { wait: true })(LoginForm);
+const mapStateToProps = state => ({
+  profile: state.profile
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadProfile: payload => dispatch(load(payload))
+});
+
+const LocaleLoginForm =  translate('form', { wait: true })(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LocaleLoginForm);

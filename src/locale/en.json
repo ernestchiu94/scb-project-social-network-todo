@@ -1,10 +1,28 @@
 {
   "common": {
-    "submit": "Submit"
+    "submit": "Submit",
+    "loading": "Loading...",
+    "cancel": "Cancel"
   },
   "screen": {
     "login": {
       "desc": "A simple social networking app to keep track of your todos and photos. Login to continue"
+    },
+    "todos": {
+      "title": "Todos"
+    },
+    "posts": {
+      "title": "Posts"
+    },
+    "albums": {
+      "title": "Albums"
+    },
+    "profile": {
+      "title": "Profile",
+      "logout": {
+        "title": "Log Out",
+        "desc": "Are you sure you want to log out?"
+      }
     }
   },
   "form": {

@@ -3,15 +3,17 @@ import { SafeAreaView } from 'react-native';
 import styles from './style';
 
 interface Props {
-  children: any
+  children: any,
+  centerVertical?: boolean,
+  centerHorizontal?: boolean
 }
 
 export default class Fullscreen extends Component<Props> {
   render() {
-    const { children } = this.props;
+    const { children, centerVertical, centerHorizontal } = this.props;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container(centerVertical, centerHorizontal)}>
         { children }
       </SafeAreaView>
     )
