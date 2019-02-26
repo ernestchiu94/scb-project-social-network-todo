@@ -24,7 +24,7 @@ class LoginScreen extends Component<ScreenProps> {
 
     this.setState({ showModal: !showModal });
     if (response === 'onSuccess') {
-      navigate('todos');
+      navigate('app');
     }
   };
 

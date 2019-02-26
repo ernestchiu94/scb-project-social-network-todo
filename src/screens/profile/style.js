@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLOR } from '@styles/constants';
+import { COLOR, DIMENSION } from '@styles/constants';
 import { whiteBackground } from '@styles/common';
 
 const styles = StyleSheet.create({
@@ -7,23 +7,39 @@ const styles = StyleSheet.create({
     ...whiteBackground
   },
   contentContainer: {
+    paddingTop: 15,
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'red'
   },
-  headerContainer: {
+  infoContainer: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    maxHeight: 50
+    width: '80%'
   },
-  logoutIcon: {
-    fontSize: 30,
-    textAlign: 'right',
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    color: COLOR.DARKGREY
-  }
+  iconContainer: {
+    paddingTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    width: '100%'
+  },
+  titleText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingVertical: 10
+  },
+  descText: {
+    color: COLOR.GREY
+  },
+  separator: {
+    marginVertical: 15,
+    width: '90%',
+    backgroundColor: COLOR.DARKGREY
+  },
+  field: (numberOfLines = 1) => ({
+    flex: 1,
+    height: numberOfLines > 1 ? 80 : 40,
+    maxHeight: numberOfLines > 1 ? 80 : 40,
+    width: '80%',
+  })
 });
 
 export default styles;

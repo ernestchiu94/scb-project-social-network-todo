@@ -19,6 +19,8 @@
     },
     "profile": {
       "title": "Profile",
+      "posts": "My Posts",
+      "albums": "My Albums",
       "logout": {
         "title": "Log Out",
         "desc": "Are you sure you want to log out?"

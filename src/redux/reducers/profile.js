@@ -9,7 +9,6 @@ const initialState = {
 };
 
 export default function profileReducer(state = initialState, { type, payload }) {
-  console.log(payload);
   switch (type) {
     case LOAD_REQUEST:
       return {

@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from 'react-navigation';
 import i18n from '@i18n';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { ProfileIcon } from '@components';
-
 import { Albums, Posts, Todos, Profile } from '@screens';
 import { COLOR } from '@styles/constants';
 import styles from './style';
