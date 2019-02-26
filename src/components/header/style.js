@@ -13,12 +13,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  icon: {
+  logout: {
     flex: 1,
     fontSize: 30,
     color: COLOR.DARKGREY,
     position: 'absolute',
     right: 15,
+    bottom: 15
+  },
+  back: {
+    flex: 1,
+    fontSize: 30,
+    color: COLOR.DARKGREY,
+    position: 'absolute',
+    left: 15,
     bottom: 15
   }
 });

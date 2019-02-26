@@ -24,8 +24,13 @@ class PostsScreen extends Component<ScreenProps> {
     this.setState({ list, loading: false });
   }
 
+  toComment(post) {
+    const { navigation: { navigate } } = this.props;
+    return navigate('comments', { post });
+  };
+
   renderItem = ({ item }) => {
-    return <Post onPress={() => console.log(true)} post={item} style={styles.post} />
+    return <Post onPress={() => this.toComment(item)} post={item} style={styles.post} />
   };
 
   render() {

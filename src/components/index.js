@@ -8,6 +8,7 @@ import Header from './header';
 import IconButton from './iconButton';
 import AlbumCard from './albumCard';
 import Post from './post';
+import Comment from './comment';
 
 export {
   Button,
@@ -19,5 +20,6 @@ export {
   Header,
   IconButton,
   AlbumCard,
-  Post
+  Post,
+  Comment
 }

@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: `${COLOR.BLACK}${COLOR.TRANSPARENT.LOW}`
   },
-  content: {
-    backgroundColor: COLOR.WHITE,
+  content: transparent => ({
+    backgroundColor: transparent ? COLOR.TRANSPARENT.HEX : COLOR.WHITE,
     borderRadius: 7,
     padding: 25,
     width: '90%'
-  },
+  }),
   contentContainer: {
     flex: 1,
     justifyContent: 'center',

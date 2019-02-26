@@ -8,7 +8,8 @@ import { AVATAR_URL } from "react-native-dotenv";
 interface Props {
   onPress?: () => any,
   post: {},
-  style?: any
+  style?: any,
+  disabled?: boolean
 }
 
 export default class Post extends Component<Props> {
@@ -28,19 +29,19 @@ export default class Post extends Component<Props> {
 
   render() {
     const { username } = this.state;
-    const { post, onPress, style } = this.props;
+    const { post, onPress, style, disabled } = this.props;
 
     return (
       <View style={style}>
-        <TouchableOpacity onPress={onPress} style={styles.container}>
+        <TouchableOpacity onPress={onPress} style={styles.container} disabled={disabled}>
           <View style={styles.imageContainer}>
             <Image source={{ uri: `${AVATAR_URL}/150/${username}.png` }} style={styles.profile}/>
           </View>
           <View style={styles.textContainer}>
-            <Text style={styles.title}>{ post.title }</Text>
+            <Text style={styles.title} numberOfLines={2}>{ post.title }</Text>
             <Text style={styles.desc} numberOfLines={2}>{ post.body }</Text>
           </View>
-          <Icon name="arrow-right-drop-circle" style={styles.icon} />
+          { !disabled && <Icon name="arrow-right-drop-circle" style={styles.icon} /> }
         </TouchableOpacity>
       </View>
     )

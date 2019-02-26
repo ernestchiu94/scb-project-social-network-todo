@@ -24,8 +24,13 @@ class AlbumsScreen extends Component<ScreenProps> {
     this.setState({ list, loading: false });
   }
 
+  toPhoto(album) {
+    const { navigation: { navigate } } = this.props;
+    return navigate('photos', { album });
+  };
+
   renderItem = ({ item }) => {
-    return <AlbumCard album={item} style={styles.card} />;
+    return <AlbumCard album={item} style={styles.card} onPress={() => this.toPhoto(item)} />;
   };
 
   render() {
@@ -36,19 +41,21 @@ class AlbumsScreen extends Component<ScreenProps> {
         <Header />
         <View style={styles.container}>
           <Fullscreen verticalCenter>
-            { loading ? (
-              <Spinner large showText />
-            ) : (
-              <FlatList
-                overScrollMode="always"
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.listContainer}
-                data={list}
-                numColumns={2}
-                extraData={this.state}
-                renderItem={this.renderItem}
-              />
-            )}
+            <View style={styles.contentContainer}>
+              { loading ? (
+                <Spinner large showText />
+              ) : (
+                <FlatList
+                  overScrollMode="always"
+                  showsVerticalScrollIndicator={false}
+                  contentContainerStyle={styles.listContainer}
+                  data={list}
+                  numColumns={2}
+                  extraData={this.state}
+                  renderItem={this.renderItem}
+                />
+              )}
+            </View>
           </Fullscreen>
         </View>
       </Fragment>

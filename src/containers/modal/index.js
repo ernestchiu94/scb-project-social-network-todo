@@ -12,12 +12,13 @@ import styles from './style';
 interface Props {
   children: any,
   visible: boolean,
-  onBackdropPress?: () => any
+  onBackdropPress?: () => any,
+  transparent?: boolean,
 }
 
 export default class Modal extends Component<Props> {
   render() {
-    const { children, visible, onBackdropPress } = this.props;
+    const { children, visible, onBackdropPress, transparent } = this.props;
 
     return (
       <ModalView
@@ -30,7 +31,7 @@ export default class Modal extends Component<Props> {
         <TouchableOpacity style={styles.container} activeOpacity={1} onPressOut={onBackdropPress}>
           <ScrollView contentContainerStyle={styles.contentContainer} directionalLocalEnabled>
             <TouchableWithoutFeedback>
-              <View style={styles.content}>
+              <View style={styles.content(transparent)}>
                 { children }
               </View>
             </TouchableWithoutFeedback>

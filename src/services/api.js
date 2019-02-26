@@ -36,4 +36,10 @@ export default class ApiService {
     const result = await fetch(path);
     return result.json();
   }
+
+  static async getCommentsByPostId(id) {
+    const path = `${API_URL}/comments?postId=${id}`;
+    const result = await fetch(path);
+    return result.json();
+  }
 }

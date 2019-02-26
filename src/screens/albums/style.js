@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     paddingBottom: 15
+  },
+  contentContainer: {
+    flex: 1,
   }
 });
 
