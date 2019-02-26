@@ -4,6 +4,8 @@ import Albums from './albums';
 import Posts from './posts';
 import Todos from './todos';
 import Profile from './profile';
+import Comments from './comments';
+import Photos from './photos';
 
 export {
   Launch,
@@ -11,5 +13,7 @@ export {
   Albums,
   Posts,
   Todos,
-  Profile
+  Profile,
+  Comments,
+  Photos
 }
