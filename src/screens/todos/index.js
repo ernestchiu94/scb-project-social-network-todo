@@ -58,7 +58,6 @@ class TodosScreen extends Component<ScreenProps> {
   renderContent = () => {
     const { list } = this.state;
     const { t } = this.props;
-    console.log(list);
 
     return (
       <View style={styles.emptyContainer}>

@@ -9,7 +9,7 @@ function* loadProfile({type, payload}) {
   try {
     const { email } = payload;
     const result = yield call(Api.getUser, email);
-    console.log(result.length, result[0]);
+
     if (result.length === 1) {
       yield put({
         type: LOAD_SUCCESS,
