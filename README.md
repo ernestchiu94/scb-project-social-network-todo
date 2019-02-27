@@ -33,6 +33,19 @@ _Please note that this application was designed in accordance to the layout of "
 
 ## Additional Notes
 
+If you find issues with running the application, please run either blocks of commands:
+
+Please note if you choose for this option, please answer no (or type `n`) for every option.
+```bash
+react-native upgrade
+react-native link
+```
+
+```bash
+react-native eject
+react-native link
+```
+
 **NOTE THAT EMAIL IS CASE SENSITIVE**
 
 Once you boot the application you will be greeted with a login screen. At this screen feel free to enter your any email. By entering an "unregistered email" (based on the emails provided by https://jsonplaceholder.typicode.com/), you will login with an "unregistered account".
