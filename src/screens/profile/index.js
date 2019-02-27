@@ -17,6 +17,19 @@ class ProfileScreen extends Component<ScreenProps> {
     return navigate('login');
   };
 
+  toNextScreen(screenName) {
+    const { navigation: { navigate }, profile: { profile } } = this.props;
+
+    switch (screenName) {
+      case 'posts':
+        return navigate('myPosts', { profile });
+      case 'albums':
+        return navigate('myAlbums', { profile });
+      default:
+        return;
+    }
+  }
+
   onLogoutPress = () => {
     const { t } = this.props;
     const buttons = [
@@ -40,8 +53,8 @@ class ProfileScreen extends Component<ScreenProps> {
             <Text style={styles.titleText}>{ profile.name }</Text>
             <Text style={styles.descText}>{ profile.username }</Text>
             <View style={styles.iconContainer}>
-              <IconButton icon="note-outline" title={t('screen:profile:posts')} onPress={() => console.log(true)} />
-              <IconButton icon="animation-outline" title={t('screen:profile:albums')} onPress={() => console.log(true)} />
+              <IconButton icon="note-outline" title={t('screen:profile:posts')} onPress={() => this.toNextScreen('posts')} />
+              <IconButton icon="animation-outline" title={t('screen:profile:albums')} onPress={() => this.toNextScreen('albums')} />
             </View>
           </Fragment>
         <Separator style={styles.separator} />

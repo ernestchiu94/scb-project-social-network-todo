@@ -15,18 +15,36 @@ class PostsScreen extends Component<ScreenProps> {
 
     this.state = {
       list: [],
-      loading: true
+      loading: true,
+      fromCurrentUser: false
     }
   }
 
   async componentDidMount() {
-    const list = await Api.getPosts();
+    const { navigation } = this.props;
+    let list;
+
+    if (navigation.state.params) {
+      const { id } = navigation.state.params.profile;
+      list = await Api.getPostsByUserId(id);
+      this.setState({ fromCurrentUser: true });
+    } else {
+      list = await Api.getPosts();
+    }
+
     this.setState({ list, loading: false });
   }
 
+  onBack = () => {
+    const { navigation: { goBack } } = this.props;
+    return goBack();
+  };
+
   toComment(post) {
-    const { navigation: { navigate } } = this.props;
-    return navigate('comments', { post });
+    const { navigation } = this.props;
+    const path = navigation.state.params ? 'myComments' : 'comments';
+
+    return navigation.navigate(path, { post });
   };
 
   renderItem = ({ item }) => {
@@ -34,11 +52,11 @@ class PostsScreen extends Component<ScreenProps> {
   };
 
   render() {
-    const { list, loading } = this.state;
+    const { list, loading, fromCurrentUser } = this.state;
 
     return (
       <Fragment>
-        <Header/>
+        <Header onBack={fromCurrentUser && this.onBack} />
         <View style={styles.container}>
           <Fullscreen horizontalCenter>
             { loading ? (

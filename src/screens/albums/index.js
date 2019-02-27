@@ -15,18 +15,36 @@ class AlbumsScreen extends Component<ScreenProps> {
 
     this.state = {
       list: [],
-      loading: true
+      loading: true,
+      fromCurrentUser: false
     }
   }
 
   async componentDidMount() {
-    const list = await Api.getAlbums();
+    const { navigation } = this.props;
+    let list;
+
+    if (navigation.state.params) {
+      const { id } = navigation.state.params.profile;
+      list = await Api.getAlbumsByUserId(id);
+      this.setState({ fromCurrentUser: true });
+    } else {
+      list = await Api.getAlbums();
+    }
+
     this.setState({ list, loading: false });
   }
 
+  onBack = () => {
+    const { navigation: { goBack } } = this.props;
+    return goBack();
+  };
+
   toPhoto(album) {
-    const { navigation: { navigate } } = this.props;
-    return navigate('photos', { album });
+    const { navigation } = this.props;
+    const path = navigation.state.params ? 'myPhotos' : 'photos';
+
+    return navigation.navigate(path, { album });
   };
 
   renderItem = ({ item }) => {
@@ -34,11 +52,11 @@ class AlbumsScreen extends Component<ScreenProps> {
   };
 
   render() {
-    const { list, loading } = this.state;
+    const { list, loading, fromCurrentUser } = this.state;
 
     return (
       <Fragment>
-        <Header />
+        <Header onBack={fromCurrentUser && this.onBack} />
         <View style={styles.container}>
           <Fullscreen verticalCenter>
             <View style={styles.contentContainer}>

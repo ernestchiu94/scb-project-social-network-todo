@@ -19,6 +19,12 @@ export default class ApiService {
     return result.json();
   }
 
+  static async getAlbumsByUserId(id) {
+    const path = `${API_URL}/albums?userId=${id}`;
+    const result = await fetch(path);
+    return result.json();
+  }
+
   static async getUserById(id) {
     const path = `${API_URL}/users?id=${id}`;
     const result = await fetch(path);
@@ -33,6 +39,12 @@ export default class ApiService {
 
   static async getPosts() {
     const path = `${API_URL}/posts`;
+    const result = await fetch(path);
+    return result.json();
+  }
+
+  static async getPostsByUserId(id) {
+    const path = `${API_URL}/posts?userId=${id}`;
     const result = await fetch(path);
     return result.json();
   }
