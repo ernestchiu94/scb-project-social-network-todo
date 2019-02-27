@@ -74,7 +74,7 @@ class TodosScreen extends Component<ScreenProps> {
             />
           </View>
         ) : (
-          <View style={styles.emptyContainer}>
+          <View style={[styles.container, styles.emptyContainer]}>
             <Icon name="exclamation" style={styles.icon} />
             <Text style={styles.text}>{ t('screen:todos:empty') }</Text>
           </View>
