@@ -46,6 +46,7 @@ class TodosScreen extends Component<ScreenProps> {
 
   renderItem = ({ item, index }) => {
     return (
+
       <TodoCard
         completed={item.completed}
         onPress={() => this.toggleTodo(index)}
@@ -60,23 +61,25 @@ class TodosScreen extends Component<ScreenProps> {
     const { t } = this.props;
 
     return (
-      <View style={styles.emptyContainer}>
+      <Fragment>
         { list.length > 0 ? (
-          <FlatList
-            overScrollMode="always"
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.listContainer}
-            data={list}
-            extraData={this.state}
-            renderItem={this.renderItem}
-          />
+          <View style={styles.container}>
+            <FlatList
+              overScrollMode="always"
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={styles.listContainer}
+              data={list}
+              extraData={this.state}
+              renderItem={this.renderItem}
+            />
+          </View>
         ) : (
-          <Fragment>
+          <View style={styles.emptyContainer}>
             <Icon name="exclamation" style={styles.icon} />
             <Text style={styles.text}>{ t('screen:todos:empty') }</Text>
-          </Fragment>
+          </View>
         )}
-      </View>
+      </Fragment>
     )
   };
 
@@ -86,11 +89,13 @@ class TodosScreen extends Component<ScreenProps> {
     return (
       <Fragment>
         <Header />
-        <View style={styles.container}>
-          <Fullscreen verticalCenter>
-            { loading ? <Spinner large showText /> : this.renderContent() }
-          </Fullscreen>
-        </View>
+        <Fullscreen verticalCenter>
+          { loading ? (
+            <View style={styles.container}>
+              <Spinner large showText />
+            </View>
+          ) : this.renderContent() }
+        </Fullscreen>
       </Fragment>
     )
   }
