@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Fullscreen } from '@containers';
 import { TodoCard, Header, Spinner } from '@components';
 import { connect } from 'react-redux';
@@ -54,26 +55,41 @@ class TodosScreen extends Component<ScreenProps> {
     )
   };
 
+  renderContent = () => {
+    const { list } = this.state;
+    const { t } = this.props;
+    console.log(list);
+
+    return (
+      <View style={styles.emptyContainer}>
+        { list.length > 0 ? (
+          <FlatList
+            overScrollMode="always"
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.listContainer}
+            data={list}
+            extraData={this.state}
+            renderItem={this.renderItem}
+          />
+        ) : (
+          <Fragment>
+            <Icon name="exclamation" style={styles.icon} />
+            <Text style={styles.text}>{ t('screen:todos:empty') }</Text>
+          </Fragment>
+        )}
+      </View>
+    )
+  };
+
   render() {
-    const { list, loading } = this.state;
+    const { loading } = this.state;
 
     return (
       <Fragment>
         <Header />
         <View style={styles.container}>
           <Fullscreen verticalCenter>
-            { loading ? (
-              <Spinner large showText />
-            ) : (
-              <FlatList
-                overScrollMode="always"
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.listContainer}
-                data={list}
-                extraData={this.state}
-                renderItem={this.renderItem}
-              />
-            )}
+            { loading ? <Spinner large showText /> : this.renderContent() }
           </Fullscreen>
         </View>
       </Fragment>

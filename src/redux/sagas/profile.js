@@ -17,7 +17,7 @@ function* loadProfile({type, payload}) {
       })
     } else {
       /** Triggers on situation where an 'unregistered' user logs into the application */
-      const unknowUserProfile = { id: 0 };
+      const unknowUserProfile = { id: 0, email };
       yield put({
         type: LOAD_SUCCESS,
         payload: unknowUserProfile

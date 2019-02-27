@@ -1,9 +1,15 @@
 import { StyleSheet } from 'react-native';
+import { COLOR } from '@styles/constants';
 import { whiteBackground, shadow } from '@styles/common';
 
 const styles = StyleSheet.create({
   container: {
     ...whiteBackground
+  },
+  emptyContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   contentContainer: {
     flex: 1,
@@ -19,6 +25,13 @@ const styles = StyleSheet.create({
     ...shadow,
     justifyContent: 'center',
     marginVertical: 10
+  },
+  icon: {
+    fontSize: 64,
+    color: COLOR.DARKGREY
+  },
+  text: {
+    color: COLOR.GREY
   }
 });
 

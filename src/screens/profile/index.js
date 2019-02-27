@@ -40,35 +40,61 @@ class ProfileScreen extends Component<ScreenProps> {
     Alert.alert(t('screen:profile:logout:title'), t('screen:profile:logout:desc'), buttons, { cancelable: false } )
   };
 
+  renderAddress() {
+    const { profile: { profile } } = this.props;
+    let address = '';
+    if (profile.address) {
+      const { street, suite, city, zipcode } = profile.address;
+      address = `${suite}, ${street},\n${city},\n${zipcode}`;
+    }
+    return address;
+  }
+
   renderContent = () => {
     const { profile: { profile }, t } = this.props;
-    const { street, suite, city, zipcode } = profile.address;
+    const unknownUser = profile.id === 0;
 
-    const userAddress = `${suite}, ${street},\n${city},\n${zipcode}`;
+    const userAddress = this.renderAddress();
+    const name = !unknownUser ? profile.name : t('common:unknown:name') ;
+    const username = !unknownUser ? profile.username : t('common:unknown:name') ;
 
     return (
       <Fragment>
         <ProfileIcon size={200} />
           <Fragment>
-            <Text style={styles.titleText}>{ profile.name }</Text>
-            <Text style={styles.descText}>{ profile.username }</Text>
-            <View style={styles.iconContainer}>
-              <IconButton icon="note-outline" title={t('screen:profile:posts')} onPress={() => this.toNextScreen('posts')} />
-              <IconButton icon="animation-outline" title={t('screen:profile:albums')} onPress={() => this.toNextScreen('albums')} />
-            </View>
+            <Text style={styles.titleText}>{ name }</Text>
+            <Text style={styles.descText}>{ username }</Text>
+            { !unknownUser && (
+              <View style={styles.iconContainer}>
+                <IconButton
+                  icon="note-outline"
+                  title={t('screen:profile:posts')}
+                  onPress={() => this.toNextScreen('posts')}
+                />
+                <IconButton
+                  icon="animation-outline"
+                  title={t('screen:profile:albums')}
+                  onPress={() => this.toNextScreen('albums')}
+                />
+              </View>
+            )}
           </Fragment>
         <Separator style={styles.separator} />
           <ScrollView style={styles.infoContainer} showsVerticalScrollIndicator={false}>
               <Field icon="email-outline" value={profile.email} style={styles.field()} />
-              <Field icon="phone" value={profile.phone} style={styles.field()} />
-              <Field
-                icon="map-marker"
-                numberOfLines={3}
-                value={userAddress}
-                style={styles.field(3)}
-              />
-              <Field icon="search-web" value={profile.website} style={styles.field()}/>
-              <Field icon="office-building" value={profile.company.name} style={styles.field()} />
+            { !unknownUser && (
+              <Fragment>
+                <Field icon="phone" value={profile.phone} style={styles.field()} />
+                <Field
+                  icon="map-marker"
+                  numberOfLines={3}
+                  value={userAddress}
+                  style={styles.field(3)}
+                />
+                <Field icon="search-web" value={profile.website} style={styles.field()}/>
+                <Field icon="office-building" value={profile.company.name} style={styles.field()} />
+              </Fragment>
+            )}
           </ScrollView>
       </Fragment>
     )

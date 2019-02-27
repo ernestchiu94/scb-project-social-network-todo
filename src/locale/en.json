@@ -2,14 +2,19 @@
   "common": {
     "submit": "Submit",
     "loading": "Loading...",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "unknown": {
+      "name": "Unknown Name",
+      "username": "Unknown Username"
+    }
   },
   "screen": {
     "login": {
       "desc": "A simple social networking app to keep track of your todos and photos. Login to continue"
     },
     "todos": {
-      "title": "Todos"
+      "title": "Todos",
+      "empty": "You have no todos"
     },
     "posts": {
       "title": "Posts"
