@@ -19,14 +19,14 @@ react-native link
 
 Finally, to run this application, enter the following command:
 ```bash
-react-native run-ios --simulator="iPhone X"
+react-native run-ios --simulator="iPhone X" --configuration Release
 ```
 
 If you would like to use a specific `ios` simulator, please feel free to rename the selected simulator to your preferred simulator:
 
 Example:
 ```bash
-react-native run-ios --simulator="iPhone 6S"
+react-native run-ios --simulator="iPhone 6S" --configuration Release
 ```
 
 _Please note that this application was designed in accordance to the layout of "iPhone X"_
