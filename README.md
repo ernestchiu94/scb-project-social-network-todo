@@ -3,7 +3,7 @@
 This repository contains the codebase for a simple social 
 networking application with a todo list feature.
 
-### Getting Started
+## Getting Started
 
 Please follow the instructions below to start and run this project.
 
@@ -31,7 +31,7 @@ react-native run-ios --simulator="iPhone 6S"
 
 _Please note that this application was designed in accordance to the layout of "iPhone X"_
 
-### Additional Notes
+## Additional Notes
 
 **NOTE THAT EMAIL IS CASE SENSITIVE**
 
